@@ -1,17 +1,57 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Time Table
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment value="theory" [(ngModel)]="segment" (ionChange)="segmentChanged()">
+      <ion-segment-button value="theory">
+        <ion-label>Theory</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="lab">
+        <ion-label>Lab</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Time Table</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item>
+      <ion-label>Day</ion-label>
+      <ion-select [(ngModel)]="selDay" (ionChange)="change()">
+        <ion-select-option *ngFor="let day of days" [value]="day.index">{{day.value}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-list>
+    <div *ngIf="!labContext">
+    <ion-card *ngFor="let class of today" >
+      <ion-card-header>
+        <ion-card-subtitle>Room {{class.room}} | {{class.slot}}</ion-card-subtitle>
+        <ion-card-title>{{class.subname}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Faculty: {{class.faculty}}
+      </ion-card-content>
+    </ion-card>
+    </div>
+    <div *ngIf="labContext">
+      <app-explore-container *ngIf="labLength==0"></app-explore-container>
+      <ion-card *ngFor="let class of Ltoday" >
+        <ion-card-header>
+          <ion-card-subtitle>{{class.slot}}</ion-card-subtitle>
+          <ion-card-title>{{class.subname}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Faculty 1: {{class.faculty1}} <br>
+          Faculty 2: {{class.faculty2}}
+        </ion-card-content>
+      </ion-card>
+      </div>
 </ion-content>

@@ -21,7 +21,6 @@ export class IaPage implements OnInit {
 }
 this.api.getMarks().subscribe(data=> {
   this.ias = data;
-  console.log(this.ias);
 })
   }
 

@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>attendance</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Attendance
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <table class="table table-bordered" [ngClass]="{'table-dark' : dark==true}">
+    <thead>
+      <tr>
+        <th scope="col">Subject</th>
+        <th scope="col">Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attend of attends">
+        <th scope="row">{{attend.subcode}}</th>
+        <td>{{attend.per}}%</td>
+      </tr>
+    </tbody>
+  </table>
 </ion-content>

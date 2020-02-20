@@ -13,4 +13,9 @@ export class Tab2Page {
   {
     this.router.navigateByUrl('/ia');
   }
+
+  attendance()
+  {
+    this.router.navigateByUrl('/attendance');
+  }
 }
