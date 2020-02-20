@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Tools
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,50 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Tools</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <br><br>
+  <ion-list>
+    <ion-item >
+      <ion-avatar slot="start">
+        <ion-icon name="person-outline" style="font-size: 40px;"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+      <h2>Faculty</h2>
+      <h3>Look up Faculty members and their Contact Details</h3>
+    </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon name="bar-chart-outline" style="font-size: 40px;"></ion-icon>
+      </ion-avatar>
+     
+      <ion-label (click)="ia()">
+        <h2>Internal Marks</h2>
+        <h3>Check your Internal Marks</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon name="checkmark-outline" style="font-size: 40px;"></ion-icon>
+      </ion-avatar>
+      
+      <ion-label>
+        <h2>Attendance</h2>
+        <h3>Check your Attendance</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item href="https://www.resnal.ml">
+      <ion-avatar slot="start">
+        <ion-icon name="ribbon-outline" style="font-size: 40px;"></ion-icon>
+      </ion-avatar>
+      
+      <ion-label>
+        <h2>Result Analysis</h2>
+        <h3>Check your Results using Resnal</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

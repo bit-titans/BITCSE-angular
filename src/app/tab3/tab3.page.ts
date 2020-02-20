@@ -17,6 +17,6 @@ export class Tab3Page {
 
   about()
   {
-    this.api.getLab().subscribe(data=>{console.log(data)})
+    
   }
 }

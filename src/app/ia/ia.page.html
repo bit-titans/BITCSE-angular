@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Internal Marks
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <table class="table table-bordered" [ngClass]="{'table-dark' : dark==true}">
+    <thead>
+      <tr>
+        <th scope="col">Subject</th>
+        <th scope="col">1st</th>
+        <th scope="col">2nd</th>
+        <th scope="col">3rd</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ia of ias">
+        <th scope="row">{{ia.subcode}}</th>
+        <td *ngIf="ia.marks[0]">{{ia.marks[0]}}</td>
+        <td *ngIf="ia.marks[0]==null">-</td>
+        <td *ngIf="ia.marks[1]">{{ia.marks[1]}}</td>
+        <td *ngIf="ia.marks[1]==null">-</td>
+        <td *ngIf="ia.marks[2]">{{ia.marks[2]}}</td>
+        <td *ngIf="ia.marks[2]==null">-</td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>

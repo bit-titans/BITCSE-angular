@@ -49,6 +49,32 @@ export class ApiService {
     };
     return this.http.get('http://localhost:8000/api/getLAB',httpOptions)
   }
+
+  getMarks()
+  {
+    let token = this.authService.getToken();
+    token = "Bearer " + token;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return this.http.get('http://localhost:8000/api/getMarks',httpOptions)
+  }
+
+  getAttendance()
+  {
+    let token = this.authService.getToken();
+    token = "Bearer " + token;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+    return this.http.get('http://localhost:8000/api/getAttendance',httpOptions)
+  }
 }
 
 
