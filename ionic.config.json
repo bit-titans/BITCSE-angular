@@ -1,6 +1,8 @@
 {
   "name": "BITCSE-angular",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "6a91a511"
 }

@@ -21,7 +21,7 @@ export class AuthService {
       let formData:FormData = new FormData();
       formData.append('username',uname);
       formData.append('password',password);
-     this.http.post<Token>("http://localhost:8000/api/token/",formData,httpOptions).subscribe(data=>{this.setSession(data.access);
+     this.http.post<Token>("/api/token/",formData,httpOptions).subscribe(data=>{this.setSession(data.access);
       this.router.navigateByUrl('/')});
 }
       
