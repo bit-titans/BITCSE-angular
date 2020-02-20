@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   {
      this.authService.login(this.username,this.password);
   }
-  signup()
+  signUp()
   {
     
   }
