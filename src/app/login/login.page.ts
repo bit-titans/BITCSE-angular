@@ -11,7 +11,6 @@ export class LoginPage implements OnInit {
   username:any;
   password:any;
   constructor(private authService:AuthService,private router:Router) { 
-    console.log(this.authService.isLoggedIn())
     if(this.authService.isLoggedIn())
         this.router.navigateByUrl('/');
   }
@@ -20,7 +19,6 @@ export class LoginPage implements OnInit {
   }
   signIn()
   {
-      console.log(this.username+this.password)
      this.authService.login(this.username,this.password);
   }
   signup()

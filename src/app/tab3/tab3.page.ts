@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-tab3',
@@ -8,9 +9,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class Tab3Page {
 
-  constructor(private authService:AuthService) {}
+  constructor(private authService:AuthService, private api:ApiService) {}
+
   logout(){
     this.authService.logout()
   }
 
+  about()
+  {
+    this.api.getFaculty().subscribe(data=>{console.log(data)})
+  }
 }
