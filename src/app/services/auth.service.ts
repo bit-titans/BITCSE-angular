@@ -26,7 +26,7 @@ export class AuthService {
 }
       
 private setSession(authResult) {
-    const expiresAt = moment().add('5','m');
+    const expiresAt = moment().add('30','d');
     localStorage.setItem('id_token', authResult);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
 }          
@@ -34,6 +34,8 @@ private setSession(authResult) {
 logout() {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    localStorage.removeItem("TT");
+    localStorage.removeItem("LTT");
     this.router.navigateByUrl('/login');
 }
 

@@ -20,7 +20,9 @@ export class AttendancePage implements OnInit {
      this.dark =true;
   }
   this.api.getAttendance().subscribe(data=> {
+    localStorage.setItem("attendance",JSON.stringify(data));
     this.attends = data;
   })
+  this.attends = JSON.parse(localStorage.getItem("attendance"));
   }
 }

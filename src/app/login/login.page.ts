@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   username:any;
-  password:any;
+  password="1999-02-19";
   constructor(private authService:AuthService,private router:Router) { 
     if(this.authService.isLoggedIn())
         this.router.navigateByUrl('/');
@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   }
   signIn()
   {
-     this.authService.login(this.username,this.password);
+     this.authService.login(this.username,this.password.toString().substring(0,10));
   }
   signUp()
   {

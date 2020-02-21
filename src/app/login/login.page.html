@@ -5,17 +5,19 @@
 </ion-header>
 
 <ion-content>
-  <h4 text-center margin-top>Login</h4>
+  <ion-text color="danger" class="d-flex justify-content-center">
+    <div style="font-size: 80px;">BITCSE</div>
+  </ion-text>
   <br>
 
   <ion-item>
-    <ion-label stacked>Username</ion-label>
+    <ion-label stacked>USN</ion-label>
     <ion-input [(ngModel)]="username"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="password"></ion-input>
+    <ion-label>Date Of Birth</ion-label>
+    <ion-datetime value="1990-02-19" placeholder="Select Date" [(ngModel)]="password"></ion-datetime>
   </ion-item>
   <br>
 

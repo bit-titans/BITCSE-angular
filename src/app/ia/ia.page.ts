@@ -20,8 +20,11 @@ export class IaPage implements OnInit {
    this.dark =true;
 }
 this.api.getMarks().subscribe(data=> {
+  localStorage.setItem("ia",JSON.stringify(data));
   this.ias = data;
 })
-  }
+
+  this.ias = JSON.parse(localStorage.getItem("ia"));
+}
 
 }

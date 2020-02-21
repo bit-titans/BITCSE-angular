@@ -24,14 +24,23 @@ export class Tab1Page implements OnInit{
     this.currentDate = date.getDay()-1
   this.selDay = this.currentDate;
   this.api.getTT().subscribe(data=>{
+    let offline = JSON.stringify(data);
+    localStorage.setItem("TT",offline);
     this.TT=data;
     this.today = this.TT[this.currentDate];
   })
   this.api.getLab().subscribe(data=>{
+    let offline = JSON.stringify(data);
+    localStorage.setItem("LTT",offline);
     this.LTT=data;
     this.Ltoday = this.LTT[this.currentDate];
     this.labLength = this.Ltoday.length;
   })
+  this.TT=JSON.parse(localStorage.getItem("TT"));
+    this.today = this.TT[this.currentDate];
+    this.LTT=JSON.parse(localStorage.getItem("LTT"));
+    this.Ltoday = this.LTT[this.currentDate];
+    this.labLength = this.Ltoday.length;
   }
   
   days = [
