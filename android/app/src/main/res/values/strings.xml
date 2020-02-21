@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BITCSE</string>
+    <string name="title_activity_main">BITCSE</string>
+    <string name="package_name">com.bittitans.BITCSE</string>
+    <string name="custom_url_scheme">com.bittitans.BITCSE</string>
+</resources>
