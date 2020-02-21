@@ -19,8 +19,6 @@ export class AppComponent {
     private router:Router
   ) {
     this.initializeApp();
-    if(this.authService.isLoggedOut())
-      this.router.navigateByUrl('/login');
   }
 
   initializeApp() {

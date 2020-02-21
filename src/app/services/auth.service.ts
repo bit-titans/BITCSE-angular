@@ -3,13 +3,13 @@ import * as moment from "moment";
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { AlertController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   access:String;
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,private router:Router,public alertController: AlertController) { }
 
   login(uname:string, password:string ) {
     const httpOptions = {
@@ -21,14 +21,16 @@ export class AuthService {
       let formData:FormData = new FormData();
       formData.append('username',uname);
       formData.append('password',password);
-     this.http.post<Token>("/api/token/",formData,httpOptions).subscribe(data=>{this.setSession(data.access);
-      this.router.navigateByUrl('/')});
+     this.http.post<Token>("https://bit-cse.ml/api/token/",formData,httpOptions).subscribe(data=>{this.setSession(data.access)}
+                                                                                          ,error=>{this.presentAlert(error.error.detail)});
 }
       
-private setSession(authResult) {
+private async setSession(authResult) {
     const expiresAt = moment().add('30','d');
     localStorage.setItem('id_token', authResult);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+    await delay(1000);
+    this.router.navigateByUrl('/');
 }          
 
 logout() {
@@ -36,6 +38,8 @@ logout() {
     localStorage.removeItem("expires_at");
     localStorage.removeItem("TT");
     localStorage.removeItem("LTT");
+    localStorage.removeItem("attendance");
+    localStorage.removeItem("ia");
     this.router.navigateByUrl('/login');
 }
 
@@ -58,11 +62,25 @@ getToken()
     return localStorage.getItem("id_token");
   else
     return "Token Expired"
-}    
+}
+
+async presentAlert(message:string) {
+  const alert = await this.alertController.create({
+    header: 'Login Error',
+    message: message,
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 }
 
 export interface Token
 {
     refresh:String;
     access:String;
+}
+
+function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms) );
 }

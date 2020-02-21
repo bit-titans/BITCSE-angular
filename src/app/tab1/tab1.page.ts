@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -17,6 +19,8 @@ export class Tab1Page implements OnInit{
   segment="theory";
   labContext = false;
   ngOnInit(): void {
+    if(this.authService.isLoggedOut())
+    this.router.navigateByUrl('/login');
    let date = new Date();
    if(date.getDay()==0)
     this.currentDate = 1
@@ -57,7 +61,7 @@ export class Tab1Page implements OnInit{
             {index:5,
               value:"Saturday"}
   ]
-  constructor(private api:ApiService) {}
+  constructor(private api:ApiService,private router:Router,private authService:AuthService) {}
 
   change()
   {

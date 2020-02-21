@@ -31,7 +31,7 @@
     </ion-item>
     </ion-list>
     <div *ngIf="!labContext">
-    <ion-card *ngFor="let class of today" >
+    <ion-card *ngFor="let class of today" mode="ios">
       <ion-card-header>
         <ion-card-subtitle>Room {{class.room}} | {{class.slot}}</ion-card-subtitle>
         <ion-card-title>{{class.subname}}</ion-card-title>
@@ -42,8 +42,8 @@
     </ion-card>
     </div>
     <div *ngIf="labContext">
-      <app-explore-container *ngIf="labLength==0"></app-explore-container>
-      <ion-card *ngFor="let class of Ltoday" >
+      <app-explore-container *ngIf="labLength==0"></app-explore-container>  
+      <ion-card *ngFor="let class of Ltoday" mode="ios">
         <ion-card-header>
           <ion-card-subtitle>{{class.slot}}</ion-card-subtitle>
           <ion-card-title>{{class.subname}}</ion-card-title>
