@@ -22,7 +22,14 @@ export class AttendancePage implements OnInit {
   this.api.getAttendance().subscribe(data=> {
     localStorage.setItem("attendance",JSON.stringify(data));
     this.attends = data;
-  })
-  this.attends = JSON.parse(localStorage.getItem("attendance"));
+  },error=>{if(error.status==504)
+                  this.goOffline()})
+  
+  }
+
+  goOffline()
+  {
+    console.log("You are offline");
+    this.attends = JSON.parse(localStorage.getItem("attendance"));
   }
 }

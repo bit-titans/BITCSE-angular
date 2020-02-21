@@ -19,8 +19,6 @@ export class Tab1Page implements OnInit{
   segment="theory";
   labContext = false;
   ngOnInit(): void {
-    if(this.authService.isLoggedOut())
-    this.router.navigateByUrl('/login');
    let date = new Date();
    if(date.getDay()==0)
     this.currentDate = 1
@@ -32,19 +30,16 @@ export class Tab1Page implements OnInit{
     localStorage.setItem("TT",offline);
     this.TT=data;
     this.today = this.TT[this.currentDate];
-  })
+  },error=>{if(error.status==504)
+                this.goOffline()})
   this.api.getLab().subscribe(data=>{
     let offline = JSON.stringify(data);
     localStorage.setItem("LTT",offline);
     this.LTT=data;
     this.Ltoday = this.LTT[this.currentDate];
     this.labLength = this.Ltoday.length;
-  })
-  this.TT=JSON.parse(localStorage.getItem("TT"));
-    this.today = this.TT[this.currentDate];
-    this.LTT=JSON.parse(localStorage.getItem("LTT"));
-    this.Ltoday = this.LTT[this.currentDate];
-    this.labLength = this.Ltoday.length;
+  },error=>{if(error.status==504)
+                this.goOffline()})
   }
   
   days = [
@@ -77,4 +72,19 @@ export class Tab1Page implements OnInit{
     else
       this.labContext = false
   }
+
+  goOffline()
+  {
+    console.log("You are offline");
+    this.TT=JSON.parse(localStorage.getItem("TT"));
+    this.today = this.TT[this.currentDate];
+    this.LTT=JSON.parse(localStorage.getItem("LTT"));
+    this.Ltoday = this.LTT[this.currentDate];
+    this.labLength = this.Ltoday.length;
+  }
+}
+
+
+function delay(ms: number) {
+  return new Promise( resolve => setTimeout(resolve, ms) );
 }

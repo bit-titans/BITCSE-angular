@@ -22,9 +22,14 @@ export class IaPage implements OnInit {
 this.api.getMarks().subscribe(data=> {
   localStorage.setItem("ia",JSON.stringify(data));
   this.ias = data;
-})
+},error=>{if(error.status==504)
+              this.goOffline()})
 
+ 
+}
+goOffline()
+{
+  console.log("You are offline");
   this.ias = JSON.parse(localStorage.getItem("ia"));
 }
-
 }

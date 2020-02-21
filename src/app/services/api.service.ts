@@ -21,7 +21,7 @@ export class ApiService {
         'Authorization': token
       })
     };
-    return this.http.get<Faculty[]>('https://bit-cse.ml/api/getFaculty',httpOptions)
+    return this.http.get<Faculty[]>('/api/getFaculty',httpOptions)
   }
 
   getTT()
@@ -34,7 +34,7 @@ export class ApiService {
         'Authorization': token
       })
     };
-    return this.http.get('https://bit-cse.ml/api/getTT',httpOptions)
+    return this.http.get('/api/getTT',httpOptions)
   }
 
   getLab()
@@ -47,7 +47,7 @@ export class ApiService {
         'Authorization': token
       })
     };
-    return this.http.get('https://bit-cse.ml/api/getLAB',httpOptions)
+    return this.http.get('/api/getLAB',httpOptions)
   }
 
   getMarks()
@@ -60,7 +60,7 @@ export class ApiService {
         'Authorization': token
       })
     };
-    return this.http.get('https://bit-cse.ml/api/getMarks',httpOptions)
+    return this.http.get('/api/getMarks',httpOptions)
   }
 
   getAttendance()
@@ -73,7 +73,7 @@ export class ApiService {
         'Authorization': token
       })
     };
-    return this.http.get('https://bit-cse.ml/api/getAttendance',httpOptions)
+    return this.http.get('/api/getAttendance',httpOptions)
   }
 }
 
