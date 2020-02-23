@@ -21,7 +21,7 @@ export class Tab1Page implements OnInit{
   ngOnInit(): void {
    let date = new Date();
    if(date.getDay()==0)
-    this.currentDate = 1
+    this.currentDate = 0
   else
     this.currentDate = date.getDay()-1
   this.selDay = this.currentDate;
